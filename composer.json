@@ -1,0 +1,16 @@
+{
+    "name": "tomdeleu/elevens-cookie-though",
+    "autoload": {
+        "psr-4": {
+            "Tomdeleu\\ElevensCookieThough\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Elevens"
+        }
+    ],
+    "require": {
+        "deployer/deployer": "^7.3"
+    }
+}

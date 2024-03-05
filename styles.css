@@ -1,0 +1,25 @@
+.ct-button {
+    background: #f26521;
+    color: white;
+    padding: 0.75rem 1rem !important;
+    margin-left: 0 !important;
+}
+.ct-button:hover {
+    background: black;
+    color: white;
+}
+.ct-acceptance {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.ct-button-secondary {
+    background: white;
+    color: black;
+    margin-left: 10px !important;
+}
+.ct-button-secondary:hover {
+    background: white;
+    color: black;
+    text-decoration: underline;
+}
