@@ -15,5 +15,5 @@
 homepage: "https://www.elevens.be"
 documentation: "https://www.elevens.be"
 versions:
-  - sha: 5f02a788b90ae804f86b04aa24af8937e567874a
+  - sha: 022ef0276bbdb26162bea1ae312e623fc79315b7
     changeNotes: Initial Version
