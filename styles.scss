@@ -1,0 +1,89 @@
+body {
+    .cookie-though {
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        border-radius: 0px;
+        right: auto;
+        left: var(--ct-default-padding);
+        @media screen and (min-width: 768px) {
+            width: 420px;
+        }
+        /* The colors used to style the modal */
+        --ct-primary-400: var(--color-text);
+        --ct-primary-300: var(--color-brand);
+        --ct-primary-200: #dedede;
+        --ct-primary-100: #f0f0f0;
+
+        /* The colors used to style: customizationButton, headerDescription and cookiePolicy */
+        --ct-text: var(--color-text);
+
+        /* The colors used to style the title elements */
+        --ct-subtitle: var(--ct-primary-300);
+        --ct-title: var(--ct-text);
+
+        /* The color used to style the cookie svg */
+        --ct-cookie: var(--color-brand);
+
+        /* The colors used to style a policy */
+        --ct-policy: var(--ct-white);
+        --ct-policy-enabled: var(--ct-policy-essential);
+        --ct-policy-text: var(--ct-primary-400);
+        --ct-policy-text-enabled: var(--ct-primary-400);
+        --ct-policy-essential: var(--ct-primary-100);
+
+        /* The colors used to style the sliders */
+        --ct-slider-primary: #6b7280;
+        --ct-slider-secondary: #d1d5db;
+        --ct-slider-enabled-primary: white;
+        --ct-slider-enabled-secondary: black;
+
+        /* The font color of the text inside a policy when it's enabled  */
+        --ct-enabled-option-color: var(--ct-white);
+
+        /* The white color */
+        --ct-white: #ffffff;
+
+        /* The margin underneath text elements */
+        --ct-text-margin: 10px;
+
+        /* The padding of the modal and margin of the banner, toggleButton and customization */
+        --ct-default-padding: 30px;
+
+        /* The padding/margin used to seperate the options and the permission buttons */
+        --ct-seperator-padding: 10px;
+
+        /* The font size of the header title */
+        --ct-heading-font-size: 16px;
+
+        /* The font size of the header sub title */
+        --ct-sub-heading-font-size: 12px;
+
+        /* The font size of text */
+        --ct-text-font-size: 12px;
+
+        /* The font size of the customize button and permission button labels */
+        --ct-button-font-size: 13px;
+
+        /* The font and font weight used in the app */
+        --ct-primary-font: var(--font-base);
+        --ct-primary-font-weight: var(--fw-title);
+
+        /* The font and font weight used for header description and policy description */
+        --ct-secondary-font: var(--font-base);
+        --ct-secondary-font-weight: var(--fw-buttons);
+
+        /* The styling of the button */
+        --ct-button: var(--ct-primary-400); // the background
+        --ct-button-color: var(--ct-white);
+        --ct-button-border: 1px solid var(--ct-primary-400);
+        --ct-button-radius: 0.25rem;
+        --ct-button-padding: 1rem 2rem;
+
+        /* The styling of the secondary button */
+        --ct-button-secondary: transparent; // the background
+        --ct-button-secondary-color: var(--ct-primary-400);
+        --ct-button-secondary-border: 1px solid var(--ct-primary-400);
+
+        /* The z-index you want the root container to have */
+        --ct-z-index: 9999;
+    }
+}

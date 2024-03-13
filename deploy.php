@@ -4,10 +4,10 @@ namespace Deployer;
 
 require 'recipe/common.php';
 
-$repository = 'git@github.com:keplerstein/elevens.git';
+$repository = 'git@github.com:keplerstein/elevens-cookie-though.git';
 $httpUser = "elevensbe";
 $sshHost = 'ssh077.webhosting.be';
-$path = '~ /subsites/cookies.elevens.be';
+$path = '~/subsites/cookies.elevens.be';
 $sshUser = $httpUser; // combell = the same
 
 set('default_timeout', 3600);
@@ -25,7 +25,6 @@ set('allow_anonymous_stats', false);
 
 // Shared files/dirs between deploys
 set('shared_files', [
-    '.env',
 ]);
 
 set('shared_dirs', [
@@ -33,13 +32,6 @@ set('shared_dirs', [
 
 // Writable dirs by web server
 set('writable_dirs', [
-    'config/project/',
-    'storage',
-    'storage/runtime',
-    'storage/logs',
-    'storage/rebrand',
-    'public/cpresources',
-    'web/uploads',
 ]);
 
 set('http_user', $httpUser);
