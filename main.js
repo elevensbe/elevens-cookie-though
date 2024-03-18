@@ -41,10 +41,7 @@ function cookiesEnabled(prefs, category) {
     else return "denied";
 }
 
-const options = window.elevensCookieOptions
-    ? mergeDeep(defaultOptions, window.elevensCookieThough)
-    : defaultOptions;
-
+const options = mergeDeep({}, defaultOptions, window.elevensCookieOptions);
 console.log("Merged options", options);
 
 // Initialize cookiethough
