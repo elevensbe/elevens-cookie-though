@@ -4,24 +4,27 @@ body {
         border-radius: 0px;
         right: auto;
         left: var(--ct-default-padding);
+        .ct-collapse {
+            scrollbar-color: var(--elevens-ct-primary-button-bg-color);
+        }
         @media screen and (min-width: 768px) {
             width: 420px;
         }
         /* The colors used to style the modal */
-        --ct-primary-400: var(--color-text);
-        --ct-primary-300: var(--color-brand);
-        --ct-primary-200: #dedede;
-        --ct-primary-100: #f0f0f0;
+        --ct-primary-400: var(--elevens-ct-primary-button-bg-color);
+        --ct-primary-300: var(--elevens-ct-primary-button-bg-color);
+        --ct-primary-200: var(--elevens-ct-primary-button-color);
+        --ct-primary-100: var(--elevens-ct-primary-button-color);
 
         /* The colors used to style: customizationButton, headerDescription and cookiePolicy */
-        --ct-text: var(--color-text);
+        --ct-text: var(--elevens-ct-primary-button-bg-color);
 
         /* The colors used to style the title elements */
         --ct-subtitle: var(--ct-primary-300);
         --ct-title: var(--ct-text);
 
         /* The color used to style the cookie svg */
-        --ct-cookie: var(--color-brand);
+        --ct-cookie: var(--elevens-ct-primary-button-bg-color);
 
         /* The colors used to style a policy */
         --ct-policy: var(--ct-white);

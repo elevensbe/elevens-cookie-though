@@ -45,6 +45,8 @@ const options = window.elevensCookieOptions
     ? mergeDeep(defaultOptions, window.elevensCookieThough)
     : defaultOptions;
 
+console.log("Merged options", options);
+
 // Initialize cookiethough
 init(options.config);
 
