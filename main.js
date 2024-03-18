@@ -12,27 +12,28 @@ function isObject(item) {
     return item && typeof item === "object" && !Array.isArray(item);
 }
 
-/**
- * Deep merge two objects.
- * @param target
- * @param ...sources
- */
-function mergeDeep(target, ...sources) {
-    if (!sources.length) return target;
-    const source = sources.shift();
+function mergeDeep(target, source) {
+    for (const key of Object.keys(source)) {
+        const currenttarget = target[key];
+        const currentsource = source[key];
 
-    if (isObject(target) && isObject(source)) {
-        for (const key in source) {
-            if (isObject(source[key])) {
-                if (!target[key]) Object.assign(target, { [key]: {} });
-                mergeDeep(target[key], source[key]);
-            } else {
-                Object.assign(target, { [key]: source[key] });
+        if (currenttarget) {
+            const objectsource = typeof currentsource === "object";
+            const objecttarget = typeof currenttarget === "object";
+
+            if (objectsource && objecttarget) {
+                void (Array.isArray(currenttarget) && Array.isArray(currentsource)
+                    ? void (target[key] = currenttarget.concat(currentsource))
+                    : void mergeDeep(currenttarget, currentsource));
+
+                continue;
             }
         }
+
+        target[key] = currentsource;
     }
 
-    return mergeDeep(target, ...sources);
+    return target;
 }
 
 function cookiesEnabled(prefs, category) {
@@ -41,8 +42,9 @@ function cookiesEnabled(prefs, category) {
     else return "denied";
 }
 
-const options = mergeDeep({}, defaultOptions, window.elevensCookieOptions);
-console.log("Merged options", options);
+let options = mergeDeep({}, defaultOptions);
+options = mergeDeep(options, window.elevensMergedCookieOpions);
+window.elevensMergedCookieOpions = options;
 
 // Initialize cookiethough
 init(options.config);
