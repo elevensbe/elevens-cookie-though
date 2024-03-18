@@ -5,11 +5,6 @@ body {
         border-radius: 0px;
         right: auto;
         left: var(--ct-default-padding);
-        .ct-collapse {
-            scrollbar-color: var(--elevens-ct-primary-button-bg-color);
-            scrollbar-color: hotpink blue;
-            scrollbar-width: thin;
-        }
         @media screen and (min-width: 768px) {
             width: 420px;
         }
