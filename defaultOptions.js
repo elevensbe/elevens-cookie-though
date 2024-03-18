@@ -4,6 +4,7 @@ export default {
         primaryButtonHoverColor: "#000000",
         primaryButtonBgColor: "#000000",
         primaryButtonBgHoverColor: "#ffffff",
+        textColor: "#000000",
     },
     config: {
         policies: [

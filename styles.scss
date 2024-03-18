@@ -17,14 +17,14 @@ body {
         --ct-primary-100: var(--elevens-ct-primary-button-color);
 
         /* The colors used to style: customizationButton, headerDescription and cookiePolicy */
-        --ct-text: var(--elevens-ct-primary-button-bg-color);
+        --ct-text: var(--elevens-ct-text-color);
 
         /* The colors used to style the title elements */
         --ct-subtitle: var(--ct-primary-300);
-        --ct-title: var(--elevens-ct-primary-button-bg-color);
+        --ct-title: var(--elevens-ct-text-color);
 
         /* The color used to style the cookie svg */
-        --ct-cookie: var(--elevens-ct-primary-button-bg-color);
+        --ct-cookie: var(--elevens-ct-text-color);
 
         /* The colors used to style a policy */
         --ct-policy: var(--ct-white);

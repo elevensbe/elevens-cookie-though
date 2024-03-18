@@ -10,44 +10,42 @@ function cookiesEnabled(prefs, category) {
     else return "denied";
 }
 
-const options = deepMerge(defaultOptions, window.elevensCookieThough || {});
-window.elevensMergedCookieOpions = options;
+function configStyles(theme) {
+    // General stylesheet to add to page
+    var styleSheet = document.createElement("style");
+    styleSheet.innerHTML = styles;
+    document.head.appendChild(styleSheet);
 
-// Initialize cookiethough
-init(options.config);
+    // Shadow stylesheet for cookie though
+    var shadowStyleSheet = document.createElement("style");
+    shadowStyleSheet.innerHTML = shadowStyles;
 
-// General stylesheet to add to page
-var styleSheet = document.createElement("style");
-styleSheet.innerHTML = styles;
-document.head.appendChild(styleSheet);
+    // properties need to be outside of the DOMContentLoaded or it doesn't work
+    document
+        .querySelector(".cookie-though")
+        .shadowRoot.querySelector(".ct-collapse")
+        .setAttribute("data-lenis-prevent", "");
 
-// Shadow stylesheet for cookie though
-var shadowStyleSheet = document.createElement("style");
-shadowStyleSheet.innerHTML = shadowStyles;
+    document.querySelector(".cookie-though").shadowRoot.appendChild(shadowStyleSheet);
+    document.documentElement.style.setProperty(
+        "--elevens-ct-primary-button-color",
+        theme.primaryButtonColor
+    );
+    document.documentElement.style.setProperty(
+        "--elevens-ct-primary-button-hover-color",
+        theme.primaryButtonHoverColor
+    );
+    document.documentElement.style.setProperty(
+        "--elevens-ct-primary-button-bg-color",
+        theme.primaryButtonBgColor
+    );
+    document.documentElement.style.setProperty(
+        "--elevens-ct-primary-button-bg-hover-color",
+        theme.primaryButtonBgHoverColor
+    );
 
-// properties need to be outside of the DOMContentLoaded or it doesn't work
-document
-    .querySelector(".cookie-though")
-    .shadowRoot.querySelector(".ct-collapse")
-    .setAttribute("data-lenis-prevent", "");
-
-document.querySelector(".cookie-though").shadowRoot.appendChild(shadowStyleSheet);
-document.documentElement.style.setProperty(
-    "--elevens-ct-primary-button-color",
-    options.theme.primaryButtonColor
-);
-document.documentElement.style.setProperty(
-    "--elevens-ct-primary-button-hover-color",
-    options.theme.primaryButtonHoverColor
-);
-document.documentElement.style.setProperty(
-    "--elevens-ct-primary-button-bg-color",
-    options.theme.primaryButtonBgColor
-);
-document.documentElement.style.setProperty(
-    "--elevens-ct-primary-button-bg-hover-color",
-    options.theme.primaryButtonBgHoverColor
-);
+    document.documentElement.style.setProperty("--elevens-ct-text-color", theme.textColor);
+}
 
 function updateConsent(prefs) {
     var consent = {
@@ -64,6 +62,16 @@ function updateConsent(prefs) {
     dataLayer.push({ event: "cookie_consent_update" });
     console.log("Consent updated", consent);
 }
+
+// ------------------------------------------------------------- GO
+
+const opts = deepMerge(defaultOptions, window.elevensCookieThough || {});
+window.elevensMergedCookieOpions = opts;
+
+configStyles(opts.theme);
+
+// Initialize cookiethough
+init(opts.config);
 
 onPreferencesChanged((prefs) => {
     updateConsent(prefs);
