@@ -2,77 +2,7 @@ import { getPreferences, init, onPreferencesChanged, show } from "cookie-though"
 import defaultOptions from "./defaultOptions";
 import shadowStyles from "./shadow-styles.scss?inline";
 import styles from "./styles.scss?inline";
-
-/**
- * Simple object check.
- * @param item
- * @returns {boolean}
- */
-function isObject(item) {
-    return item && typeof item === "object" && !Array.isArray(item);
-}
-
-/*!
- * Deep merge two or more objects or arrays.
- * (c) 2023 Chris Ferdinandi, MIT License, https://gomakethings.com
- * @param   {*} ...objs  The arrays or objects to merge
- * @returns {*}          The merged arrays or objects
- */
-function deepMerge(...objs) {
-    /**
-     * Get the object type
-     * @param  {*}       obj The object
-     * @return {String}      The object type
-     */
-    function getType(obj) {
-        return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
-    }
-
-    /**
-     * Deep merge two objects
-     * @return {Object}
-     */
-    function mergeObj(clone, obj) {
-        for (let [key, value] of Object.entries(obj)) {
-            let type = getType(value);
-            if (
-                clone[key] !== undefined &&
-                getType(clone[key]) === type &&
-                ["array", "object"].includes(type)
-            ) {
-                clone[key] = deepMerge(clone[key], value);
-            } else {
-                clone[key] = structuredClone(value);
-            }
-        }
-    }
-
-    // Create a clone of the first item in the objs array
-    let clone = structuredClone(objs.shift());
-
-    // Loop through each item
-    for (let obj of objs) {
-        // Get the object type
-        let type = getType(obj);
-
-        // If the current item isn't the same type as the clone, replace it
-        if (getType(clone) !== type) {
-            clone = structuredClone(obj);
-            continue;
-        }
-
-        // Otherwise, merge
-        if (type === "array") {
-            clone = [...clone, ...structuredClone(obj)];
-        } else if (type === "object") {
-            mergeObj(clone, obj);
-        } else {
-            clone = obj;
-        }
-    }
-
-    return clone;
-}
+import deepMerge from "deepmerge";
 
 function cookiesEnabled(prefs, category) {
     var tmp = prefs.cookieOptions.find((x) => x.id === category);
@@ -80,7 +10,7 @@ function cookiesEnabled(prefs, category) {
     else return "denied";
 }
 
-const options = deepMerge({}, defaultOptions, window.elevensMergedCookieOpions);
+const options = deepMerge(defaultOptions, window.elevensCookieThough || {});
 window.elevensMergedCookieOpions = options;
 
 // Initialize cookiethough
@@ -95,9 +25,13 @@ document.head.appendChild(styleSheet);
 var shadowStyleSheet = document.createElement("style");
 shadowStyleSheet.innerHTML = shadowStyles;
 
-document.querySelector(".cookie-though").shadowRoot.appendChild(shadowStyleSheet);
+// properties need to be outside of the DOMContentLoaded or it doesn't work
+document
+    .querySelector(".cookie-though")
+    .shadowRoot.querySelector(".ct-collapse")
+    .setAttribute("data-lenis-prevent", "");
 
-// add a css variable to the root
+document.querySelector(".cookie-though").shadowRoot.appendChild(shadowStyleSheet);
 document.documentElement.style.setProperty(
     "--elevens-ct-primary-button-color",
     options.theme.primaryButtonColor
