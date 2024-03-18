@@ -7,6 +7,9 @@ body {
         left: var(--ct-default-padding);
         .ct-collapse {
             scrollbar-color: var(--elevens-ct-primary-button-bg-color);
+            &::-webkit-scrollbar-track {
+                background: red;
+            }
         }
         @media screen and (min-width: 768px) {
             width: 420px;
