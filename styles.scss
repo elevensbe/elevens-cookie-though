@@ -1,5 +1,6 @@
 body {
     .cookie-though {
+        background: var(--elevens-ct-bg-color);
         box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         border-radius: 0px;
         right: auto;
@@ -29,9 +30,9 @@ body {
         /* The colors used to style a policy */
         --ct-policy: var(--ct-white);
         --ct-policy-enabled: var(--ct-policy-essential);
-        --ct-policy-text: var(--ct-primary-400);
-        --ct-policy-text-enabled: var(--ct-primary-400);
-        --ct-policy-essential: var(--ct-primary-100);
+        --ct-policy-text: var(--elevens-ct-text-color);
+        --ct-policy-text-enabled: var(--elevens-ct-text-color);
+        --ct-policy-essential: var(--elevens-ct-bg-color);
 
         /* The colors used to style the sliders */
         --ct-slider-primary: #6b7280;

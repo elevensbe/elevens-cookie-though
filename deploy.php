@@ -93,7 +93,7 @@ task('reload', function () {
 desc('Deploy your project');
 task('deploy', [
     'deploy:prepare',
-    'deploy:vendors',
+    //'deploy:vendors',
     'npm:install',
     'npm:build',
     'deploy:clear_paths',

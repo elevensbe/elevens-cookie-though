@@ -5,6 +5,7 @@ export default {
         primaryButtonBgColor: "#000000",
         primaryButtonBgHoverColor: "#ffffff",
         textColor: "#000000",
+        bgColor: "#ffffff",
     },
     config: {
         policies: [
