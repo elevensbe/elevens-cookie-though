@@ -11,41 +11,43 @@ function cookiesEnabled(prefs, category) {
 }
 
 function configStyles(theme) {
-    // General stylesheet to add to page
-    var styleSheet = document.createElement("style");
-    styleSheet.innerHTML = styles;
-    document.head.appendChild(styleSheet);
-
-    // Shadow stylesheet for cookie though
-    var shadowStyleSheet = document.createElement("style");
-    shadowStyleSheet.innerHTML = shadowStyles;
-
-    // properties need to be outside of the DOMContentLoaded or it doesn't work
-    document
-        .querySelector(".cookie-though")
-        .shadowRoot.querySelector(".ct-collapse")
-        .setAttribute("data-lenis-prevent", "");
-
-    document.querySelector(".cookie-though").shadowRoot.appendChild(shadowStyleSheet);
-    document.documentElement.style.setProperty(
-        "--elevens-ct-primary-button-color",
-        theme.primaryButtonColor
-    );
-    document.documentElement.style.setProperty(
-        "--elevens-ct-primary-button-hover-color",
-        theme.primaryButtonHoverColor
-    );
-    document.documentElement.style.setProperty(
-        "--elevens-ct-primary-button-bg-color",
-        theme.primaryButtonBgColor
-    );
-    document.documentElement.style.setProperty(
-        "--elevens-ct-primary-button-bg-hover-color",
-        theme.primaryButtonBgHoverColor
-    );
-
-    document.documentElement.style.setProperty("--elevens-ct-text-color", theme.textColor);
+   
 }
+
+ // General stylesheet to add to page
+ var styleSheet = document.createElement("style");
+ styleSheet.innerHTML = styles;
+ document.head.appendChild(styleSheet);
+
+ // Shadow stylesheet for cookie though
+ var shadowStyleSheet = document.createElement("style");
+ shadowStyleSheet.innerHTML = shadowStyles;
+
+ // properties need to be outside of the DOMContentLoaded or it doesn't work
+ document
+     .querySelector(".cookie-though")
+     .shadowRoot.querySelector(".ct-collapse")
+     .setAttribute("data-lenis-prevent", "");
+
+ document.querySelector(".cookie-though").shadowRoot.appendChild(shadowStyleSheet);
+ document.documentElement.style.setProperty(
+     "--elevens-ct-primary-button-color",
+     theme.primaryButtonColor
+ );
+ document.documentElement.style.setProperty(
+     "--elevens-ct-primary-button-hover-color",
+     theme.primaryButtonHoverColor
+ );
+ document.documentElement.style.setProperty(
+     "--elevens-ct-primary-button-bg-color",
+     theme.primaryButtonBgColor
+ );
+ document.documentElement.style.setProperty(
+     "--elevens-ct-primary-button-bg-hover-color",
+     theme.primaryButtonBgHoverColor
+ );
+
+ document.documentElement.style.setProperty("--elevens-ct-text-color", theme.textColor);
 
 function updateConsent(prefs) {
     var consent = {
