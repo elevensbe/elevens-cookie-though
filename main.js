@@ -69,30 +69,32 @@ function updateConsent(prefs) {
 const opts = deepMerge(defaultOptions, window.elevensCookieThough || {});
 window.elevensMergedCookieOpions = opts;
 
-// Initialize cookiethough
-init(opts.config);
+document.addEventListener("DOMContentLoaded", function () {
+    // Initialize cookiethough
+    init(opts.config);
 
-// After init
-configStyles(opts.theme);
+    // After init
+    configStyles(opts.theme);
 
-onPreferencesChanged((prefs) => {
-    updateConsent(prefs);
-});
-
-// Does the cookie exist?
-if (document.cookie.indexOf("cookie-preferences") !== -1) {
-    // There already was consent configured. Trigger the custom event.
-    var prefs = getPreferences();
-    if (prefs) {
+    onPreferencesChanged((prefs) => {
         updateConsent(prefs);
-    }
-}
-
-const cookiePrefsButton = document.querySelector("[data-cookie-though]");
-if (cookiePrefsButton) {
-    cookiePrefsButton.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        show();
     });
-}
+
+    // Does the cookie exist?
+    if (document.cookie.indexOf("cookie-preferences") !== -1) {
+        // There already was consent configured. Trigger the custom event.
+        var prefs = getPreferences();
+        if (prefs) {
+            updateConsent(prefs);
+        }
+    }
+
+    const cookiePrefsButton = document.querySelector("[data-cookie-though]");
+    if (cookiePrefsButton) {
+        cookiePrefsButton.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            show();
+        });
+    }
+});
