@@ -65,13 +65,12 @@ function updateConsent(prefs) {
 }
 
 // ------------------------------------------------------------- GO
-console.log("Step 1");
-
 const opts = deepMerge(defaultOptions, window.elevensCookieThough || {});
 window.elevensMergedCookieOpions = opts;
 
 //console.log("Attach event listeneres foor Cookiethough");
-//document.addEventListener("DOMContentLoaded", function () {
+
+function startup() {
     console.log("Trying to initialize CookieThough", opts.config);
 
     // Initialize cookiethough
@@ -101,4 +100,14 @@ window.elevensMergedCookieOpions = opts;
             show();
         });
     }
-//});
+}
+
+if (document.readyState === "loading") {
+    // Loading hasn't finished yet
+    console.log("Loading hasn't finished yet. Attach to DOMContentLoaded event.");
+    document.addEventListener("DOMContentLoaded", startup);
+} else {
+    // `DOMContentLoaded` has already fired
+    console.log("DOMContentLoaded has already fired. Run startup now.");
+    startup();
+}
