@@ -70,6 +70,8 @@ const opts = deepMerge(defaultOptions, window.elevensCookieThough || {});
 window.elevensMergedCookieOpions = opts;
 
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("Trying to initialize CookieThough", opts.config);
+
     // Initialize cookiethough
     init(opts.config);
 

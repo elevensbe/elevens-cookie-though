@@ -6,7 +6,7 @@ require 'recipe/common.php';
 
 $repository = 'git@github.com:keplerstein/elevens-cookie-though.git';
 $httpUser = "elevensbe";
-$sshHost = 'ssh077.webhosting.be';
+$sshHost = 'ssh091.webhosting.be';
 $path = '~/subsites/cookies.elevens.be';
 $sshUser = $httpUser; // combell = the same
 
