@@ -69,6 +69,7 @@ function updateConsent(prefs) {
 const opts = deepMerge(defaultOptions, window.elevensCookieThough || {});
 window.elevensMergedCookieOpions = opts;
 
+console.log("Attach event listeneres foor Cookiethough");
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Trying to initialize CookieThough", opts.config);
 
