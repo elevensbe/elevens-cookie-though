@@ -65,10 +65,16 @@ function updateConsent(prefs) {
 }
 
 // ------------------------------------------------------------- GO
-const overwriteMerge = (destinationArray, sourceArray, options) => sourceArray
-const opts = deepMerge(defaultOptions, window.elevensCookieThough || {}, {
-    arrayMerge: overwriteMerge
-});
+const opts = deepMerge(defaultOptions, window.elevensCookieThough || {});
+
+// Custom merge with overwrite for policies
+if(window.elevensCookieThough.config.policies && window.elevensCookieThough.config.policies.length > 0) {
+    const overwriteMerge = (destinationArray, sourceArray, options) => sourceArray
+    opts.config.policies = deepMerge(defaultOptions.config.policies, window.elevensCookieThough.config.policies || {}, {
+        arrayMerge: overwriteMerge
+    });
+}
+
 window.elevensMergedCookieOpions = opts;
 
 //console.log("Attach event listeneres foor Cookiethough");
