@@ -65,7 +65,10 @@ function updateConsent(prefs) {
 }
 
 // ------------------------------------------------------------- GO
-const opts = deepMerge(defaultOptions, window.elevensCookieThough || {});
+const overwriteMerge = (destinationArray, sourceArray, options) => sourceArray
+const opts = deepMerge(defaultOptions, window.elevensCookieThough || {}, {
+    arrayMerge: overwriteMerge
+});
 window.elevensMergedCookieOpions = opts;
 
 //console.log("Attach event listeneres foor Cookiethough");
