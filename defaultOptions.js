@@ -8,7 +8,7 @@ export default {
         bgColor: "#ffffff",
         borderRadius: "0",
         buttonBorderRadius: "0.25rem",
-        buttonPadding: "1rem 2rem",
+        buttonPadding: "0.75rem 1rem",
     },
     config: {
         policies: [
