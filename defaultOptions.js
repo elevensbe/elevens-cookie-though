@@ -6,6 +6,9 @@ export default {
         primaryButtonBgHoverColor: "#ffffff",
         textColor: "#000000",
         bgColor: "#ffffff",
+        borderRadius: "0",
+        buttonBorderRadius: "0.25rem",
+        buttonPadding: "1rem 2rem",
     },
     config: {
         policies: [

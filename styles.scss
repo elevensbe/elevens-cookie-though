@@ -2,7 +2,7 @@ body {
     .cookie-though {
         background: var(--elevens-ct-bg-color);
         box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-        border-radius: 0px;
+        border-radius: var(--elevens-ct-border-radius);
         right: auto;
         left: var(--ct-default-padding);
         @media screen and (min-width: 768px) {
@@ -76,8 +76,8 @@ body {
         --ct-button: var(--ct-primary-400); // the background
         --ct-button-color: var(--ct-white);
         --ct-button-border: 1px solid var(--ct-primary-400);
-        --ct-button-radius: 0.25rem;
-        --ct-button-padding: 1rem 2rem;
+        --ct-button-radius: var(--elevens-ct-button-border-radius);
+        --ct-button-padding: var(--elevens-ct-button-padding);
 
         /* The styling of the secondary button */
         --ct-button-secondary: transparent; // the background

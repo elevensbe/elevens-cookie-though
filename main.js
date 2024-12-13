@@ -46,6 +46,9 @@ function configStyles(theme) {
 
     document.documentElement.style.setProperty("--elevens-ct-text-color", theme.textColor);
     document.documentElement.style.setProperty("--elevens-ct-bg-color", theme.bgColor);
+    document.documentElement.style.setProperty("--elevens-ct-border-radius", theme.borderRadius);
+    document.documentElement.style.setProperty("--elevens-ct-button-border-radius", theme.buttonBorderRadius);
+    document.documentElement.style.setProperty("--elevens-ct-button-padding", theme.buttonPadding);
 }
 
 function updateConsent(prefs) {
