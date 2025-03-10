@@ -4,24 +4,30 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
     build: {
+        minify: "terser", // Ensure minification for all outputs
+        terserOptions: {
+            compress: {
+                drop_console: true, // Remove console logs
+                drop_debugger: true, // Remove debugger statements
+            },
+            format: {
+                comments: false, // Remove comments
+                beautify: false, // Force minification
+            },
+        },
         lib: {
-            // Could also be a dictionary or array of multiple entry points
             entry: resolve(__dirname, "main.js"),
             name: "ElevensCookieThough",
-            // the proper extensions will be added
-            fileName: "elevens-cookie-though",
+            formats: ["cjs"], // Ensure all formats are built
         },
         rollupOptions: {
-            // make sure to externalize deps that shouldn't be bundled
-            // into your library
-            external: ["vue"],
-            output: {
-                // Provide global variables to use in the UMD build
-                // for externalized deps
-                globals: {
-                    vue: "Vue",
+            output: [
+                {
+                    format: "cjs",
+                    entryFileNames: "elevens-cookie-though.js",
+                    compact: true,
                 },
-            },
+            ],
         },
     },
 });
